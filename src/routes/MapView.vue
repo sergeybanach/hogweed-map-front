@@ -62,6 +62,10 @@ onMounted(async () => {
       async () => {
         useUiStore().isAddingLocation = false;
         setMapCursor();
+        if (gMap.marker !== null) {
+          gMap.marker.remove();
+          gMap.marker = null;
+        }
       }
     "
   >
