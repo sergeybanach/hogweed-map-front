@@ -10,14 +10,6 @@
       v-model="locationData.description"
     ></textarea>
     <Button :on-click="send">Send</Button>
-    <Button
-      :on-click="
-        async () => {
-          useUiStore().isAddingLocation = false;
-        }
-      "
-      >Cancel</Button
-    >
   </div>
 </template>
 
