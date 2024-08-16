@@ -92,7 +92,7 @@ onMounted(async () => {
     >
       cancel
     </Button>
-    <LocationTable :locations="_data.locations"></LocationTable>
+    <!-- <LocationTable :locations="_data.locations"></LocationTable> -->
   </div>
 </template>
 
