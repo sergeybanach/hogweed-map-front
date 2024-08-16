@@ -63,12 +63,7 @@ onMounted(async () => {
       :on-click="
         async () => {
           useUiStore().isAddingLocation = true;
-          // setMapCursor();
-          if (useUiStore().isAddingLocation === true) {
-            gMap.map.getCanvas().style.cursor = 'crosshair';
-          } else {
-            gMap.map.getCanvas().style.cursor = '';
-          }
+          setMapCursor();
         }
       "
       >{{
