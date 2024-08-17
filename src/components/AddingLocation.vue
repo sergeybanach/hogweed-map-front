@@ -9,7 +9,32 @@
       class="w-full border"
       v-model="locationData.description"
     ></textarea> -->
-    <Button :on-click="send">Send</Button>
+
+    <div class="m-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        lng
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="lng"
+        type="text"
+        placeholder="Username"
+        v-model="state.lng"
+      />
+    </div>
+    <div class="m-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        lat
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="lat"
+        type="text"
+        placeholder="Username"
+        v-model="state.lat"
+      />
+    </div>
+    <Button :on-click="send" class="ml-4">Send</Button>
   </div>
 </template>
 
@@ -58,5 +83,10 @@ const addLocation = async (location: {
 
 const locationData = reactive({
   description: "",
+});
+
+const state = reactive({
+  lng: 0,
+  lat: 0,
 });
 </script>
