@@ -2,13 +2,13 @@
   <div
     class="absolute top-[20px] left-[20px] w-[200px] h-[300px] bg-white z-20 rounded-md"
   >
-    <div class="text-xl font-bold">Add location</div>
-    <div>description</div>
+    <!-- <div class="text-xl font-bold">Add location</div> -->
+    <!-- <div>description</div>
     <textarea
       rows="2"
       class="w-full border"
       v-model="locationData.description"
-    ></textarea>
+    ></textarea> -->
     <Button :on-click="send">Send</Button>
   </div>
 </template>
