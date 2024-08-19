@@ -7,6 +7,7 @@ import AddingLocation from "../components/AddingLocation.vue";
 import { useUiStore } from "../stores/ui.ts";
 import { gMap } from "../map";
 import { setMapCursor } from "../utils.ts";
+import { useMarkerStore } from "../stores/marker.ts";
 
 const _data = reactive({
   users: [],
@@ -34,13 +35,21 @@ onMounted(async () => {
     },
   });
 
-  gMap.map.on("click", async (e: any) => {
+  gMap.map.on("click", async (e) => {
     if (useUiStore().isAddingLocation && gMap.marker === null) {
       gMap.marker = new Marker({
         draggable: true,
       })
         .setLngLat(e.lngLat)
         .addTo(gMap.map);
+      useMarkerStore().lng = e.lngLat.lng;
+      useMarkerStore().lat = e.lngLat.lat;
+
+      gMap.marker.on("dragend", () => {
+        const lngLat = gMap.marker.getLngLat();
+        useMarkerStore().lng = lngLat.lng;
+        useMarkerStore().lat = lngLat.lat;
+      });
     }
   });
 });

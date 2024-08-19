@@ -19,7 +19,7 @@
         id="lng"
         type="text"
         placeholder="Username"
-        v-model="state.lng"
+        v-model="useMarkerStore().lng"
       />
     </div>
     <div class="m-4">
@@ -31,7 +31,7 @@
         id="lat"
         type="text"
         placeholder="Username"
-        v-model="state.lat"
+        v-model="useMarkerStore().lat"
       />
     </div>
     <Button :on-click="send" class="ml-4">Send</Button>
@@ -40,14 +40,12 @@
 
 <script setup lang="ts">
 import Button from "./Button.vue";
-import { reactive } from "vue";
 
 import { gMap } from "../map";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../main.ts";
 import { useUiStore } from "../stores/ui.ts";
-
-const props = defineProps(["sendCallback", "cancelCallback"]);
+import { useMarkerStore } from "../stores/marker.ts";
 
 const send = async () => {
   if (gMap.marker !== null) {
@@ -80,13 +78,4 @@ const addLocation = async (location: {
     console.error("Error adding document: ", e);
   }
 };
-
-const locationData = reactive({
-  description: "",
-});
-
-const state = reactive({
-  lng: 0,
-  lat: 0,
-});
 </script>
