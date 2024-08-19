@@ -46,6 +46,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../main.ts";
 import { useUiStore } from "../stores/ui.ts";
 import { useMarkerStore } from "../stores/marker.ts";
+import { watch } from "vue";
 
 const send = async () => {
   if (gMap.marker !== null) {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Map, Marker } from "maplibre-gl";
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, watch } from "vue";
 import Button from "../components/Button.vue";
 import LocationTable from "../components/LocationTable.vue";
 import AddingLocation from "../components/AddingLocation.vue";
@@ -53,6 +53,18 @@ onMounted(async () => {
     }
   });
 });
+
+const markerStore = useMarkerStore();
+
+watch(
+  () => markerStore.lng,
+  () => gMap.marker.setLngLat({ lng: markerStore.lng, lat: markerStore.lat }),
+);
+
+watch(
+  () => markerStore.lat,
+  () => gMap.marker.setLngLat({ lng: markerStore.lng, lat: markerStore.lat }),
+);
 </script>
 
 <template>
